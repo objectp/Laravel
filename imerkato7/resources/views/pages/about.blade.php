@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
+@extends('masterHtml')
 
-<h1>Aout Us!</h1>
+@section('content')
+
+<h1>Aout Us! {{ $name }}</h1>
+
+@stop
 
 
-</body>
-</html>

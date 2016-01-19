@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
+@extends('masterHtml')
+
+@section('content')
 
 <h1>Contact Me!</h1>
 
+@stop
 
-</body>
-</html>
+@section('footer')
+	<script type="text/javascript">alert('contact footer');</script>
+@stop
