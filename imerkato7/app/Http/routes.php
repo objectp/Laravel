@@ -40,9 +40,13 @@ Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 
 Route::get('/articles', 'ArticlesController@index');
+Route::get('/articles/create', 'ArticlesController@create');
 Route::get('/articles/{id}', 'ArticlesController@show');
+
+
 
 Route::get('/houses', 'HousesController@index');
 Route::get('/houses/{id}', 'HousesController@show');
+Route::get('/houses/create', 'HousesController@create');
 
 
