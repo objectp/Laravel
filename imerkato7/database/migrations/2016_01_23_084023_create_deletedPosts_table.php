@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBusinessesTable extends Migration
+class CreateDeletedPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateBusinessesTable extends Migration
      */
     public function up()
     {
-        Schema::create('businesses', function (Blueprint $table) {
+        Schema::create('deletedPosts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->string('user_username');
@@ -23,6 +23,8 @@ class CreateBusinessesTable extends Migration
             $table->string('category');
             $table->string('type');
             $table->string('title');
+            $table->decimal('price',5,2);
+            $table->string('currency_type');
             $table->text('detail');
             $table->string('contact_imerkato');
             $table->string('contact_phone');
@@ -39,6 +41,6 @@ class CreateBusinessesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('businesses');
+        Schema::drop('deletedPosts');
     }
 }

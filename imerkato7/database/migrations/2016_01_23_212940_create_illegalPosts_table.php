@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBusinessesTable extends Migration
+class CreateIllegalPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,12 @@ class CreateBusinessesTable extends Migration
      */
     public function up()
     {
-        Schema::create('businesses', function (Blueprint $table) {
+        Schema::create('illegalPosts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('post_id');
+            $table->integer('poster_id');
+            $table->string('poster_username');
+            $table->string('poster_email');
             $table->integer('user_id');
             $table->string('user_username');
             $table->string('user_email');
@@ -24,10 +28,10 @@ class CreateBusinessesTable extends Migration
             $table->string('type');
             $table->string('title');
             $table->text('detail');
-            $table->string('contact_imerkato');
-            $table->string('contact_phone');
             $table->string('image_path');
             $table->string('thumb_path');
+            //$table->timestamps('posted_date');
+            $table->text('illegal_message');
             $table->timestamps();
         });
     }
@@ -39,6 +43,6 @@ class CreateBusinessesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('businesses');
+        Schema::drop('illegalPosts');
     }
 }

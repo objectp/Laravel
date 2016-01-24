@@ -19,7 +19,7 @@ class House extends Model
     	'title',
     	'price',
     	'currency_type',
-    	'detial',
+    	'detail',
     	'contact_imerkato',
     	'contact_phone',
     	'image_path',

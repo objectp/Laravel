@@ -25,7 +25,7 @@ class CreateHousesTable extends Migration
             $table->string('title');
             $table->decimal('price', 5,2);
             $table->string('currency_type');
-            $table->text('detial');
+            $table->text('detail');
             $table->string('contact_imerkato');
             $table->string('contact_phone');
             $table->string('image_path');
