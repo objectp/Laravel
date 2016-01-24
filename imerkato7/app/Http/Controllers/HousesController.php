@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use \App\House;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+//use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Requests;
 
 class HousesController extends Controller
 {
@@ -28,6 +29,21 @@ class HousesController extends Controller
     	}
         */
     	return view('houses.show', compact('house'));
+
+    }
+
+    public function create(){
+        return view('houses.create');
+
+    }
+
+     public function store(){
+        $input = Request::all();
+        //$input['published_at'] = Carbon::now();
+
+        Article::create($input);
+
+        return redirect('houses');
 
     }
 }
