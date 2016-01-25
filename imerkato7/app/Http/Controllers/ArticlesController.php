@@ -7,8 +7,12 @@ use App\Article;
 //use Carbon\Carbon;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Request;
+use App\Http\Requests\CreateArticleRequest;
+use Illuminate\HttpResponse;
+//use App\Http\Controllers\Controller;
+//use Request;
+//use Illuminate\Http\Request\CreateArticleRequest;
+
 
 class ArticlesController extends Controller
 {
@@ -47,14 +51,29 @@ class ArticlesController extends Controller
 
     }
 
-     public function store(){
+     public function store(CreateArticleRequest $request){
      	//Article::create(Request::all());
-        $input = Request::all();
+        //$input = Request::all();
         //$input['published_at'] = Carbon::now();
 
-        Article::create($input);
+        //Article::create($input);
+
+        Article::create($request->all());
 
         return redirect('articles');
 
+    }
+
+    public function edit($id){
+    	$article = Article::findOrFail($id);
+    	return view('articles.edit', compact('article'));
+    }
+
+    public function update($id, CreateArticleRequest $request){
+    	$article = Article::findOrFail($id);
+
+    	$article->update($request->all());
+
+        return redirect('articles');
     }
 }

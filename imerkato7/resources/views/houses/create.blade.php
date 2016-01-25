@@ -7,43 +7,13 @@
 
 	
 	{!! Form::open(['url' => 'houses']) !!}
-		<div class="form-group">
-			{!! Form::label('category', 'Category:') !!}
-			{!! Form::text('category') !!}
-		<div>
-		<div class="form-group">
-			{!! Form::label('type', 'Type:') !!}
-			{!! Form::text('type') !!}
-		<div>
-		<div class="form-group">
-			{!! Form::label('title', 'Title:') !!}
-			{!! Form::text('title') !!}
-		<div>
-		<div class="form-group">
-			{!! Form::label('price', 'Price:') !!}
-			{!! Form::text('price') !!}
-		<div>
-		<div class="form-group">
-			{!! Form::label('currencyType', 'Currency Type:') !!}
-			{!! Form::text('currencyType') !!}
-		<div>
-		<div class="form-group">
-			{!! Form::label('detail', 'Detail:') !!}
-			{!! Form::textarea('detail') !!}
-		<div>
-		<div class="form-group">
-			{!! Form::label('contactImerkato', 'Contact me by imerkato:') !!}
-			{!! Form::text('contactImerkato') !!}
-		<div>
-		<div class="form-group">
-			{!! Form::label('contactPhone', 'Contact me by my phone:') !!}
-			{!! Form::text('contactPhone') !!}
-		<div>
-	
-		<div class="form-group">
-			{!! Form::submit('Add Article', ['class'=>'btn-primary form-control']) !!}
-		<div>
+		
+		@include ('houses.form', ['submitButtonText' => 'Add House'])
+
 	{!! Form::close() !!}
+
+
+	@include('errors.list')
 
 
 @stop
