@@ -27,26 +27,46 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    //Place all your web routes here otherwise $errors variable is not working
+	Route::get('/about', 'PagesController@about');
+	Route::get('/contact', 'PagesController@contact');
+
+	Route::resource('articles', 'ArticlesController');//this can replaces all the routs for articles above
+	Route::resource('houses', 'HousesController');
+
+	Route::auth();
+	Route::get('/home', 'HomeController@index');
+
+	/*Route::controller([
+		'auth' => 'Auth\AuthController',
+		'password' => 'Auth\PasswordController',
+		]);*/
+
+
 });
 
-Route::group(['middleware' => 'web'], function () {
+	/*Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
-});
+});*/
 
-Route::get('/about', 'PagesController@about');
-Route::get('/contact', 'PagesController@contact');
+/*Route::get('/about', 'PagesController@about');
+Route::get('/contact', 'PagesController@contact');*/
 
-Route::get('/articles', 'ArticlesController@index');
+/*Route::get('/articles', 'ArticlesController@index');
 Route::get('/articles/create', 'ArticlesController@create');
 Route::get('/articles/{id}', 'ArticlesController@show');//{id} is a wildcard can take anything
 Route::post('/articles', 'ArticlesController@store');//you send post request to the name of the collecion
+Route::get('articles/{id}/edit', 'ArticlesController@edit');
 
 Route::get('/houses', 'HousesController@index');
 Route::get('/houses/create', 'HousesController@create');
 Route::get('/houses/{id}', 'HousesController@show');
+Route::post('/houses', 'HousesController@store');*/
+
+//Route::resource('articles', 'ArticlesController');//this can replaces all the routs for articles above
+//Route::resource('houses', 'HousesController'); //this can replace all routes for houses above
 
 
 

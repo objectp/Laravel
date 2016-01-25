@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use \App\House;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
-//use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Requests;
+use App\Http\Requests;
+use App\Http\Requests\CreateHouseRequest;
+use Illuminate\HttpResponse;
+//use App\Http\Controllers\Controller;
+//use Requests;
 
 class HousesController extends Controller
 {
@@ -37,13 +39,27 @@ class HousesController extends Controller
 
     }
 
-     public function store(){
-        $input = Request::all();
+     public function store(CreateHouseRequest $request){
+        //$input = Request::all();
         //$input['published_at'] = Carbon::now();
 
-        Article::create($input);
+        //House::create($input);
+        House::create($request->all());
 
         return redirect('houses');
 
+    }
+
+    public function edit($id){
+        $house = House::findOrFail($id);
+        return view('houses.edit', compact('house'));
+    }
+
+     public function update($id, CreateHouseRequest $request){
+        $house = House::findOrFail($id);
+
+        $house->update($request->all());
+
+        return redirect('houses');
     }
 }
