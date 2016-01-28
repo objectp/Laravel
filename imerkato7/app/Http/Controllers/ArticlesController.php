@@ -18,6 +18,8 @@ class ArticlesController extends Controller
 {
     public function index(){
 
+        //return \Auth::user()->name;
+
     	//$articles = Article::all();//order articles the oldest first
     	$articles = Article::latest()->get();//order articles newst first
     	//$articles = Article::oldest()->get();//order articles newst first
@@ -52,13 +54,18 @@ class ArticlesController extends Controller
     }
 
      public function store(CreateArticleRequest $request){
-     	//Article::create(Request::all());
-        //$input = Request::all();
-        //$input['published_at'] = Carbon::now();
+     	/* Option 1
+        Article::create(Request::all());
+        $input = Request::all();
+        $input['published_at'] = Carbon::now();
 
-        //Article::create($input);
+        Article::create($input);*/
 
+        /* Option 2, doesn't include user_id
         Article::create($request->all());
+        */
+        /*Option 3, includes user id*/
+        Auth::user()->articles()->save($article);
 
         return redirect('articles');
 
