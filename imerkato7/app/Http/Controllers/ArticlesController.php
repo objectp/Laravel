@@ -14,6 +14,7 @@ use Illuminate\HttpResponse;
 //use Illuminate\Http\Request\CreateArticleRequest;
 
 
+
 class ArticlesController extends Controller
 {
     public function index(){
@@ -65,6 +66,8 @@ class ArticlesController extends Controller
         Article::create($request->all());
         */
         /*Option 3, includes user id*/
+        $article = new Article($request->all());
+
         Auth::user()->articles()->save($article);
 
         return redirect('articles');
