@@ -19,7 +19,17 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller
 {
+   /*Middleware routes all routes to login page if you apply only it  it works of the age you specified */
+   public function __construct(){
+        $this->middleware('auth', ['only' => 'create']);
+
+        /*//option 2
+        $this->middleware('auth', ['except' => 'create']);*/
+    }
+
+
     public function index(){
+
 
         //return \Auth::user()->name;
 
@@ -52,6 +62,10 @@ class ArticlesController extends Controller
     }
 
     public function create(){
+
+       /* if(Auth::guest()){
+            return redirect('articles');
+        }*/
         return view('articles.create');
 
     }
