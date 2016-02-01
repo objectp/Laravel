@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Article;
 //use Illuminate\Http\Request;
 //use Carbon\Carbon;
@@ -12,6 +13,7 @@ use Illuminate\HttpResponse;
 //use App\Http\Controllers\Controller;
 //use Request;
 //use Illuminate\Http\Request\CreateArticleRequest;
+use Illuminate\Support\Facades\Auth;
 
 
 class ArticlesController extends Controller
@@ -65,6 +67,8 @@ class ArticlesController extends Controller
         Article::create($request->all());
         */
         /*Option 3, includes user id*/
+        $article = new Article($request->all());
+
         Auth::user()->articles()->save($article);
 
         return redirect('articles');
