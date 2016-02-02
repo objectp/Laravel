@@ -1,4 +1,4 @@
-<div class="form-group">
+        <div class="form-group">
 			{!! Form::label('category', 'Category:') !!}
 			{!! Form::text('category') !!}
 		<div>

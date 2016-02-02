@@ -1,22 +1,39 @@
-@extends('masterHtml')
 
+@extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Create House</div>
 
-<h1>Insert new house</h1>
+                <div class="panel-body">
+                    
+                        {!! csrf_field() !!}
 
-	
-	{!! Form::open(['url' => 'houses']) !!}
-		
-		@include ('houses.form', ['submitButtonText' => 'Add House'])
+                              <div class="panel-heading">Insert new house</div>
 
-	{!! Form::close() !!}
+                        {!! Form::open(['url' => 'houses']) !!}
+            
+                              @include ('houses.form', ['submitButtonText' => 'Add House'])
 
-
-	@include('errors.list')
+                        {!! Form::close() !!}
 
 
-@stop
+                        @include('errors.list')
+            
+                      </div>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+
+
 
 
 {{-- $table->increments('id');
