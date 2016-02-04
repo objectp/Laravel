@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +25,9 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+	Route::get('/', function () {
+    return view('welcome');
+	});
     //Place all your web routes here otherwise $errors variable is not working
 	Route::get('/about', 'PagesController@about');
 	Route::get('/contact', 'PagesController@contact');

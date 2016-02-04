@@ -39,7 +39,7 @@ class HousesController extends Controller
 
     }
 
-     public function store(CreateHouseRequest $request){
+    public function store(CreateHouseRequest $request){
         //$input = Request::all();
         //$input['published_at'] = Carbon::now();
 
@@ -55,7 +55,7 @@ class HousesController extends Controller
         return view('houses.edit', compact('house'));
     }
 
-     public function update($id, CreateHouseRequest $request){
+    public function update($id, CreateHouseRequest $request){
         $house = House::findOrFail($id);
 
         $house->update($request->all());

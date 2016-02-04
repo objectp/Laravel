@@ -7,14 +7,15 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Edit House</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/houses') }}">
+                    {{-- <form class="form-horizontal" role="form" method="POST" action="{{ url('/houses') }}"> --}}
+                    {!! Form::model($house, ['method' => 'PATCH','class' => 'form-horizontal','action' => ['HousesController@update', $house->id]]) !!}
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Category</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="category" value="{{ old('category') }}">
+                                <input type="text" class="form-control" name="category" value="{{ $house->category }}" >
 
                                 @if ($errors->has('category'))
                                     <span class="help-block">
@@ -28,7 +29,7 @@
                             <label class="col-md-4 control-label">Type</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="type" value="{{ old('type') }}">
+                                <input type="text" class="form-control" name="type" value="{{ $house->type }}">
 
                                 @if ($errors->has('type'))
                                     <span class="help-block">
@@ -38,25 +39,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Title</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="title">
+                                <input type="text" class="form-control" name="title" value="{{ $house->title }}">
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">
@@ -70,7 +57,7 @@
                             <label class="col-md-4 control-label">Pirce</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="pirce">
+                                <input type="text" class="form-control" name="pirce" value="{{ $house->price }}">
 
                                 @if ($errors->has('pirce'))
                                     <span class="help-block">
@@ -84,7 +71,7 @@
                             <label class="col-md-4 control-label">Currency Type</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="currency_type">
+                                <input type="text" class="form-control" name="currency_type" value="{{ $house->currency_type }}">
 
                                 @if ($errors->has('currency_type'))
                                     <span class="help-block">
@@ -98,7 +85,7 @@
                             <label class="col-md-4 control-label">Detail</label>
 
                             <div class="col-md-6">
-                                <input type="textarea" class="form-control" name="detail">
+                                <input type="textarea" class="form-control" name="detail" value="{{ $house->detail }}">
 
                                 @if ($errors->has('detail'))
                                     <span class="help-block">
@@ -115,7 +102,8 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    {{-- </form> --}}
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

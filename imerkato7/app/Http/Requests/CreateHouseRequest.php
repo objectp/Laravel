@@ -28,10 +28,11 @@ class CreateHouseRequest extends Request
             'type' => 'required',
             'title' => 'required',
             'price' => 'required',
+            /*'currency_type' => 'required',*/
             'currency_type' => 'required',
             'detail' => 'required',
-            'contact_imerkato' => 'required',
-            'contact_phone' => 'required'
+            /*'contact_imerkato' => 'required',
+            'contact_phone' => 'required'*/
         ];
     }
 }
